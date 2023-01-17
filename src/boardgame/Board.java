@@ -52,6 +52,20 @@ public class Board {
         return piece(position) != null;
     }
 
+    public Piece RemovePiece(Position position){
+        if (!positionexists(position)){
+            throw new BoardException("this position doesnt exists");
+        }else{
+            if (piece(position) == null){
+                return null;
+            }
+            Piece aux = piece(position);
+            aux.position = null;
+            pieces[position.getRow()][position.getColumn()] = null;
+            return aux;
+        }
+    }
+
     public int getRows() {
         return rows;
     }
